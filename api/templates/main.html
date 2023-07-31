@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e1e29">
+    <link rel="icon" href="static/memo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="static/memo.ico" type="image/x-icon">
+    <title>Tasking - Simplify tasks like never before!</title>
+    <link rel= "stylesheet" type= "text/css" href= "static/styles/main-style.css">
+    <link rel="stylesheet" href="static/styles/icons/css/all.css">
+</head>
+<body>
+    <div class="toast-container" id="toastContainer"></div>
+    <h6 id="uid" style="visibility: hidden;opacity: 0;display: none;"></h6>
+    <div id="big">
+        <div id="left">
+            <div class="lmain" id="m1">
+                <div id="circl"><p id="circle-txt"></p></div>
+                <div id="emal"><h2 id="j_name"></h2><p id="j_usn">meet2005</p></div>
+            </div>
+            <div class="lmain" id="m2">
+                <button id="allLogOut">
+                    Log Out
+                </button>
+            </div>
+            <div class="lmain" id="m3">
+                <input onfocus="" type="text" oninput="search();" placeholder="Search Tasks" name="search" id="search">
+                <i onclick="ser();" id="ser" class="fas fa-search"></i>  
+            </div>
+            <div class="lmain" id="m4">
+                <h1>Lists</h1>  
+                <div class="new"><h1 onclick="add_list_name();">+</h1></div>
+                <div id="list-items">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div id="main">
+            <div class="mmain" id="tit1">
+                <img style="height: 42px;" src="static/memo.svg" id="lis">
+                <h1 id = "curlisname">My List</h1>
+                <div onclick="sh_menu();" id="hint"><p>⋯</p></div>
+                <div class="mmain" id="menu">
+                    <div onclick="del_alltask();"><h2>Delete completed Tasks</h2></div>
+                    <div onclick="copy_list();"><h2>Copy List</h2></div>
+                    <div onclick="del_list();"><h2>Delete List</h2></div>
+                </div>
+            </div>  
+            <div id="d1">
+                <div id="notask">
+                    <div><img src="static/notask_dark.png"></div>
+                    <h1>No Tasks Here!</h1>
+                    <p>Add your to-dos and keep track of them to get a clear view of the day ahead.</p>
+                </div>
+                <div id="d1-1"></div>
+
+                <div onclick="hide();" class="shape" id="complete">
+                    <h4>
+                        <i id="comp-hide" class="fas fa-chevron-down"></i>
+                        Completed
+                    </h4>
+                </div>
+
+                <div id="d1-2"></div>
+                
+            </div>
+            <div id="b1">
+                <div class="mmain" id="bt">
+                    <input placeholder="Add Task" type="text" name="new" id="new" autocomplete="off">
+                    <div onclick="addnewtask();"><span>+</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="right">
+            <div class="rmain" id="up">
+                <div onclick="goback();"><i class="fas fa-arrow-left rt-icn"></i></div>
+                <h2 id="up_list">My List</h2>
+            </div>
+
+            <div id="notask2">
+                <div><img src="static/notask2_dark.png"></div>
+                <h1>Time To Relax</h1>
+                <p>Your mind will answer most questions if you learn to relax and wait for the answer.</p>
+            </div>
+
+            <div class="rmain" id="ttitle">
+                <i onclick="checkonrt();" id="type_circle" class="far fa-circle cir"></i>
+                <textarea oninput="auto_grow();" name="task" id="task" autocomplete="off"></textarea>
+            </div>
+            <div class="rmain" id="tdetail">
+                <div>
+                    <p>
+                        <input type="date" onchange="chdte();" value="2021-01-21" id="date">
+                        <span id="date_present"><i class="far fa-calendar-alt rt-icn"></i><text id="date_dis">Date here!</text><i onclick="date_hide();" class="fas fa-times cross rt-icn"></i></span>
+                        <span id="date_absent" class="not-set"><i class="far fa-calendar-alt rt-icn"></i> Add Due Date</span>
+                    </p>
+                </div>
+            </div>
+            <div class="rmain" id="tdetail2">
+                <div><h2><i class="far fa-sticky-note rt-icn"></i> Notes</h2></div>
+                <textarea placeholder="Add Notes" name="note" id="note" autocomplete="off"></textarea>
+            </div>
+            <div class="rmain" id="btm">
+                <div onclick="save_change();" id="done">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div onclick="delete_change();" id="canc">
+                    <i class="fas fa-trash"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="del_lis_big">
+        <div>
+            <h1 id="lis_war">Delete List?</h1>
+            <button id="yes" onclick="yespopup();">Yes</button>
+            <button id="can" onclick="canpopup();">No</button>
+        </div>
+    </div>
+    <div id="add_lis_big">
+        <div>
+            <input type="text" name="new_list" id="new_list" placeholder="My New List" autocomplete="off">
+            <button id="sub" onclick="subpopup();">Submit</button>
+            <button id="can" onclick="canpopup();">Cancel</button>
+        </div>        
+    </div>
+    <div id="spiral">
+        <div class="load">
+            <div class="ring"></div>
+                <span id="error">LOADING...</span>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js"; // Import the onAuthStateChanged function here
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyCLzuXb5w7XSWZBecOYJTK3-RnNsy3vghI",
+            authDomain: "tasking-7aec2.firebaseapp.com",
+            projectId: "tasking-7aec2",
+            storageBucket: "tasking-7aec2.appspot.com",
+            messagingSenderId: "447257643773",
+            appId: "1:447257643773:web:1bfa6ebf0b31a798518c94"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth(app);
+        auth.languageCode = 'it';
+
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                document.getElementById("j_name").textContent = user.displayName
+                document.getElementById("j_usn").textContent = user.email.split('@')[0]
+                document.getElementById('circle-txt').textContent = `${document.getElementById('j_name').textContent.slice(0,1)}`
+                document.getElementById('uid').textContent = user.uid
+            } 
+            else {
+                window.location.href = "/login";
+            }
+        });
+
+        document.getElementById("allLogOut").addEventListener("click", logout);
+        function logout(){
+            auth.signOut().then(() => {
+                console.log("User signed out successfully.");
+                window.location.href = "/"
+            }).catch((error) => {
+                console.log("Error signing out:", error);
+            });
+        }
+    </script>
+    <script src="static/script/main-code.js"></script>
+</body>
+</html>
