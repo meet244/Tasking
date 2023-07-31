@@ -1,4 +1,4 @@
-[![Tasking Preview](https://github.com/meet244/Tasking/assets/83262693/4ef296aa-e5bc-44e9-89aa-1211bf32cbe1)](https://tasking-meet.vercel.app/)
+[![Tasking Preview](https://github.com/meet244/Tasking/assets/83262693/f50bc120-5d2d-4c00-ac41-a487d286bd5c)](https://tasking-meet.vercel.app/)
 
 ## Welcome to Tasking! 🎉
 
