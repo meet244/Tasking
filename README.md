@@ -1,8 +1,16 @@
 [![Tasking Preview](https://github.com/meet244/Tasking/assets/83262693/f50bc120-5d2d-4c00-ac41-a487d286bd5c)](https://tasking-meet.vercel.app/)
 
 ## Welcome to [Tasking](https://tasking-meet.vercel.app/)! 🎉
+Visit Website 👉 [https://tasking-meet.vercel.app](https://tasking-meet.vercel.app)
 
 Tasking is a super cool task management website that I built from scratch. 🛠️ It has been an incredibly exciting journey creating this app using Vanilla JavaScript, HTML, and CSS. I must say, I've had a blast learning all those nifty CSS tricks along the way! 💻💡
+
+## Screenshots 
+
+![Tasking-Simplify-tasks-like-never-before- (1)](https://github.com/meet244/Tasking/assets/83262693/5df7042d-da21-4733-9b03-0f30f49eb75c)
+![bvhkbh](https://github.com/meet244/Tasking/assets/83262693/335cc1a3-f75b-4808-b3ae-690b1f1d4f2f)
+![Tasking-Simplify-tasks-like-never-before-](https://github.com/meet244/Tasking/assets/83262693/40b2debe-b034-41b4-ae8a-0c5c2a779a38)
+![Tasking-Simplify-tasks-like-never-before- (2)](https://github.com/meet244/Tasking/assets/83262693/b6c3c0ca-0b44-4c98-82a0-373e688171fd)
 
 ## 📱 Mobile-Friendly and Easy Peasy!
 
