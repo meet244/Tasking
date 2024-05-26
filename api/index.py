@@ -65,9 +65,10 @@ def verify():
     name = mydb[usn]
 
     send = []
-    for docs in (name.find({"_id": {"$ne": '0'}})):
+    for docs in name.find({"_id": {"$ne": '0'}}):
+        docs["_id"] = str(docs["_id"])
         send.append(docs)
-    return(jsonify(send))
+    return jsonify(send)
 
 @app.route('/update',methods=['POST'])
 def update():
